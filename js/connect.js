@@ -1,14 +1,17 @@
 // connect with parse.com 
-$('#register-new-user').click(function() {
-	if ($('#register-new-user').text() == "Please login") {
-		$('.modal-login-btn').text('login');
-		$('.login-link').fadeIn('fast');
-		$('#register-new-user').text('New user please register');
+Parse.initialize("bXkP2s23KZh0HNmKCRUlczT6oVADedZm1aw9Jj0r", "pxjEtmnNSkAQwJARrv5j4BrmeaylUelBp7jJwodG");
+
+var navSignIn = $('#nav-sign-in');
+navSignIn.click(function() {
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+		//logout the user
+		Parse.User.logOut();
+		navSignIn.text('sign in');
+		$('#nav-sign-in').attr("data-target", "#login-modal");
 	}
 	else {
-		$('.modal-login-btn').text('Register');
-		$('.login-link').fadeOut('fast');
-		$('#register-new-user').text('Please login');
+		//login user
 	}
 });
 
@@ -18,14 +21,15 @@ $('.modal-login-btn').click(function() {
 	
 	if($('.modal-login-btn').text() == 'Register') {
 		var user = new Parse.User();
-		user.set('username', username);
-		user.set('password', password);
-		user.set('email', username);
+		user.set("username", username);
+		user.set("password", password);
+		user.set("email", username);
 
 		user.signUp(null, {
 			success: function(user) {
 				//user signed in
-				alert('done');
+				userLoginin(username, password);
+
 			},
 			error: function(user, error) {
 				// show the error message to user
@@ -34,20 +38,23 @@ $('.modal-login-btn').click(function() {
 		});
 	}
 	else {
-		alert ('login');
-		alert(username);
-		Parse.User.logIn(username, password, {
+		userLoginin(username, password);
+	}
+});
+
+function userLoginin(username, password) {
+	Parse.User.logIn(username, password, {
   			success: function(user) {
     			// Do stuff after successful login.
-    			alert('done');
     			$('#login-modal').modal('hide');
+    			$('#nav-sign-in').text('Log out');
+    			$('#nav-sign-in').attr("data-target", "#");
   			},
   			error: function(user, error) {
     			// The login failed. Check error to see why.
     			alert("Error: " + error.code + " " + error.message);
   			}
 		});
-	}
-});
+}
 
 

@@ -25,3 +25,17 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+$(function() {
+	$('.register-new-user').click(function() {
+	if ($('.register-new-user').text() == "Please login") {
+		$('.modal-login-btn').text('login');
+		$('.login-link').fadeIn('fast');
+		$('.register-new-user').text('New user please register');
+	}
+	else {
+		$('.modal-login-btn').text('Register');
+		$('.login-link').fadeOut('fast');
+		$('.register-new-user').text('Please login');
+	}
+	});
+});
