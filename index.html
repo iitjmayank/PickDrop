@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="agarwal.knayam@gmail.com">
 
-    <title>Pick and Drop</title>
+    <title>PickDropStuff</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Pick and Drop</a>
+                <a class="navbar-brand page-scroll" href="#page-top">PickDropstuff</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -148,6 +148,7 @@
     <aside class="clients">
         <div class="container">
             <div class="row">
+            <h4 class="service-heading"><u>Featured stores</u></h4>
                 <div class="col-md-3 col-sm-6">
                     <a href="#">
                         <img src="img/logos/Provogue.jpg" class="img-responsive img-centered" alt="">
@@ -183,32 +184,26 @@
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
-                    <a href="#" data-toggle="modal" data-target="#portfolioModal1">
-						<span class="fa-stack fa-4x">
-							<i class="fa fa-circle fa-stack-2x text-primary"></i>
-							<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-						</span>
-					</a>
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+					</span>
                     <h4 class="service-heading">Order your parcel</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
-					<a href="#" data-toggle="modal" data-target="#portfolioModal2">
-						<span class="fa-stack fa-4x">
-							<i class="fa fa-circle fa-stack-2x text-primary"></i>
-							<i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-						</span>
-					</a>
-                    <h4 class="service-heading">Parcel Ready</h4>
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+					</span>
+                    <h4 class="service-heading">Parcel Pickup</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
                 <div class="col-md-4">
-					<a href="#" data-toggle="modal" data-target="#portfolioModal3">
-						<span class="fa-stack fa-4x">
-							<i class="fa fa-circle fa-stack-2x text-primary"></i>
-							<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-						</span>
-					</a>
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+					</span>
                     <h4 class="service-heading">Parcel Delivered</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
@@ -231,7 +226,47 @@
     <!-- Order Tracking Section -->
     <section id="tracking">
         <div class="container">
-            
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Order tracking</h2>
+                    <h3 class="section-subheading text-muted">Do you know your parcel status?</h3>
+                </div>
+            </div>
+            <form id="trackorderForm" novalidate>
+                <div class="row ">
+                    <div class="form-group col-lg-3 col-lg-offset-4">                
+                        <input type="text" class="form-control" placeholder="Parcel Invoice number *" id="invoice" required data-validation-required-message="Please enter parcel invoice number.">
+                        <p class="help-block text-danger"></p>            
+                    </div>               
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>      
+                </div>
+            </form>
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-3 bs-wizard-step disabled">
+                  <div class="text-center bs-wizard-stepnum">Order placed</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Order ready</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Out for delivery</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Delivered</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
         </div>
     </section>
 
