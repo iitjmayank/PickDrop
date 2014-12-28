@@ -87,10 +87,10 @@
                     <button type="button" class="btn btn-xl dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Pick your retailer    <span class="caret"></span>
                     </button>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Provogue</a></li>
-                    <li><a href="#">LifeStyle</a></li>
-                    <li><a href="#">Shopper Stop</a></li>
-                    <li><a href="#">Max</a></li>
+                    <li id="store"><a href="./package.html">Provogue</a></li>
+                    <li id="store"><a href="./package.html">LifeStyle</a></li>
+                    <li id="store"><a href="./package.html">Shopper Stop</a></li>
+                    <li id="store"><a href="./package.html">Max</a></li>
                   </ul>
                 </div>
             </div>
@@ -150,22 +150,22 @@
             <div class="row">
             <h4 class="service-heading"><u>Featured stores</u></h4>
                 <div class="col-md-3 col-sm-6">
-                    <a href="#">
+                    <a href="./package.html">
                         <img src="img/logos/Provogue.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <a href="#">
+                    <a href="./package.html">
                         <img src="img/logos/ShopperStop.png" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <a href="#">
+                    <a href="./package.html">
                         <img src="img/logos/LifeStyle.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
 				<div class="col-md-3 col-sm-6">
-                    <a href="#">
+                    <a href="./package.html">
                         <img src="img/logos/max.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
@@ -179,7 +179,6 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">How it works?</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -189,23 +188,23 @@
 						<i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
 					</span>
                     <h4 class="service-heading">Order your parcel</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Tell us the stuff which you want us to pick up and the location from where it needs to be picked up.</p>
                 </div>
                 <div class="col-md-4">
 					<span class="fa-stack fa-4x">
 						<i class="fa fa-circle fa-stack-2x text-primary"></i>
-						<i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+						<i class="fa fa-automobile fa-stack-1x fa-inverse"></i>
 					</span>
                     <h4 class="service-heading">Parcel Pickup</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">We shall reliably pick up the parcel and put it in a safe packing and set out for delivery.</p>
                 </div>
                 <div class="col-md-4">
 					<span class="fa-stack fa-4x">
 						<i class="fa fa-circle fa-stack-2x text-primary"></i>
-						<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+						<i class="fa fa-home fa-stack-1x fa-inverse"></i>
 					</span>
                     <h4 class="service-heading">Parcel Delivered</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">As per your convenience, we shall reach your doorstep and deliver to your satisfaction.</p>
                 </div>
             </div>
         </div>
@@ -234,7 +233,11 @@
             </div>
             <form id="trackorderForm" novalidate>
                 <div class="row ">
-                    <div class="form-group col-lg-3 col-lg-offset-4">                
+                    <div class="form-group col-lg-3 col-lg-offset-2">                
+                        <input type="text" class="form-control" placeholder="Your registered mobile no *" id="invoice" required data-validation-required-message="Please enter mobile number.">
+                        <p class="help-block text-danger"></p>            
+                    </div>
+                    <div class="form-group col-lg-3 ">                
                         <input type="text" class="form-control" placeholder="Parcel Invoice number *" id="invoice" required data-validation-required-message="Please enter parcel invoice number.">
                         <p class="help-block text-danger"></p>            
                     </div>               

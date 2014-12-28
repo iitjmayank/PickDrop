@@ -39,3 +39,11 @@ $(function() {
 	}
 	});
 });
+
+var retailerName = "Nothing";
+
+$(function() {
+	$('#store').click(function() {
+		retailerName = $('#store').text();
+	});
+});
