@@ -9,6 +9,15 @@ body {
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
 .text-muted {
     color: #777;
 }
@@ -239,6 +248,11 @@ fieldset[disabled] .btn-xl.active {
         transition: padding .3s;
     }
 
+    .navbar-package {
+        padding: 10px 0;
+        background-color: #3b5998;
+    }
+
     .navbar-default .navbar-brand {
         font-size: 2em;
         -webkit-transition: all .3s;
@@ -251,7 +265,7 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default.navbar-shrink {
-        padding: 10px 0;
+        padding: 5px 0;
         background-color: #3b5998;
     }
 
@@ -320,7 +334,7 @@ header .intro-text .intro-heading {
 }
 
 section {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 section h2.section-heading {

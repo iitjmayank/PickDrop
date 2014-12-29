@@ -40,6 +40,11 @@ $(function() {
 	});
 });
 
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+
 var retailerName = "Nothing";
 
 $(function() {
