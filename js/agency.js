@@ -45,10 +45,16 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-var retailerName = "Nothing";
-
 $(function() {
-	$('#store').click(function() {
-		retailerName = $('#store').text();
+	$('#pick-retailer-dropdown > li').click(function() {
+		sessionStorage.setItem("RetailerName", $(this).text());
 	});
 });
+
+$(function() {
+	$('.clients img').click(function() {
+		sessionStorage.setItem("RetailerName", $(this).attr("alt"));
+	});
+});
+
+/* Specific for package.html page*/

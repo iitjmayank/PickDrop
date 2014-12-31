@@ -9,8 +9,43 @@ $(function() {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
 
+            // User sign-in or register
+            if ($('.modal-login-btn').click()) {
+                var username = $('input#username').val();
+                var password = $('input#login-pass').val();
+                
+                if($('.modal-login-btn').text() == 'Register') {
+                    var user = new Parse.User();
+                    user.set("username", username);
+                    user.set("password", password);
+                    user.set("email", username);
+
+                    user.signUp(null, {
+                        success: function(user) {
+                            //user signed in
+                            userLoginin(username, password);
+
+                        },
+                        error: function(user, error) {
+                            // show the error message to user
+                            //alert("Error: " + error.code + " " + error.message);
+                            $('#login-error').html("<div class='alert alert-danger'>");
+                            $('#login-error > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                                .append("</button>");
+                            $('#login-error > .alert-danger').append("<strong>" + error.code + " " + error.message +"</strong>");
+                            $('#success > .alert-danger').append('</div>');
+                            //clear all fields
+                            $('#loginForm').trigger("reset");
+                        }
+                    });
+                }
+                else {
+                    userLoginin(username, password);
+                }
+            };
+
             // order tracking
-            $('#order-tracking-submit').click(function(){
+            if ($('#order-tracking-submit').click()){
                 var phone = $("input#order-tracking-phone").val();
                 var invoice = $("input#order-tracking-invoice").val();
                 var i=0;
@@ -47,10 +82,10 @@ $(function() {
                     }
                 });
                 */
-            });
+            };
 
             // Send Feedback
-            $('#send-feedback').click(function(){
+            if ( $('#send-feedback').click()){
                 var name = $("input#name").val();
                 var email = $("input#email").val();
                 var phone = $("input#phone").val();
@@ -91,7 +126,7 @@ $(function() {
                         $('#contactForm').trigger("reset");
                     }
                 });
-            });
+            };
         },
         filter: function() {
             return $(this).is(":visible");
@@ -109,3 +144,27 @@ $(function() {
 $('#name').focus(function() {
     $('#success').html('');
 });
+
+function userLoginin(username, password) {
+    Parse.User.logIn(username, password, {
+            success: function(user) {
+                // Do stuff after successful login.
+                $('#login-modal').modal('hide');
+                $('#nav-sign-in').text('Log out');
+                $('#nav-sign-in').attr("data-target", "#");
+
+                $('#loginForm').trigger("reset");
+            },
+            error: function(user, error) {
+                // The login failed. Check error to see why.
+                //alert("Error: " + error.code + " " + error.message);
+                $('#login-error').html("<div class='alert alert-danger'>");
+                $('#login-error > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                    .append("</button>");
+                $('#login-error > .alert-danger').append("<strong>" + error.code + " " + error.message +"</strong>");
+                $('#success > .alert-danger').append('</div>');
+                //clear all fields
+                $('#loginForm').trigger("reset");
+            }
+        });
+}

@@ -39,7 +39,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
+            <div class="navbar-header ">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -80,17 +80,15 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Think... Delivered!!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
-                <div class="btn-group">
+                <div class="btn-group" >
                     <button type="button" class="btn btn-xl dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Pick your retailer <span class="caret"></span>
                     </button>
-                  <div class="dropdown dropdown-tip">
-                      <ul class="dropdown-menu " role="menu">
-                    <li id="store"><a href="./package.html">Provogue</a></li>
-                    <li id="store"><a href="./package.html">LifeStyle</a></li>
-                    <li id="store"><a href="./package.html">Shopper Stop</a></li>
-                    <li id="store"><a href="./package.html">Max</a></li>
+                  <ul class="dropdown-menu " role="menu" id="pick-retailer-dropdown">
+                    <li ><a href="./package.html">Provogue</a></li>
+                    <li ><a href="./package.html">LifeStyle</a></li>
+                    <li ><a href="./package.html">Shopper Stop</a></li>
+                    <li ><a href="./package.html">Max</a></li>
                   </ul>
-                  </div>
                 </div>
             </div>
         </div>
@@ -109,17 +107,21 @@
       			<div class="clearfix"></div>
       			<div id='social-icons-conatainer'>
 	        		<div class='modal-body-left'>
-	        			<div class="form-group">
-		              		<input type="text" id="username" placeholder="Enter your email id" value="" class="form-control login-field">
-		              		<i class="fa fa-user login-field-icon"></i>
-		            	</div>
-		
-		            	<div class="form-group">
-		            	  	<input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
-		              		<i class="fa fa-lock login-field-icon"></i>
-		            	</div>
-		
-		            	<a href="#" class="btn btn-success modal-login-btn text-center">Login</a>
+	        			<form id="loginForm" novalidate>
+                            <div class="form-group">
+                                <input type="text" id="username" placeholder="Enter your email id" class="form-control login-field" required data-validation-required-message="Please enter valid email-id.">
+                                <i class="fa fa-user login-field-icon"></i>
+                                <p class="help-block text-danger"></p>
+                            </div>
+            
+                            <div class="form-group">
+                                <input type="password" id="login-pass" placeholder="Password" class="form-control login-field" required data-validation-required-message="Please enter password.">
+                                <i class="fa fa-lock login-field-icon"></i>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div id="login-error"></div>
+                            <button type="submit" class="btn btn-success modal-login-btn text-center">Login</button>
+                        </form>
 		            	<a href="#" class="login-link text-center">Lost your password?</a>
 	        		</div>
 	        	
@@ -150,22 +152,22 @@
             <h4 class="service-heading"><u>Featured stores</u></h4>
                 <div class="col-md-3 col-sm-6">
                     <a href="./package.html">
-                        <img src="img/logos/Provogue.jpg" class="img-responsive img-centered" alt="">
+                        <img src="img/logos/Provogue.jpg" class="img-responsive img-centered" alt="provogue">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <a href="./package.html">
-                        <img src="img/logos/ShopperStop.png" class="img-responsive img-centered" alt="">
+                        <img src="img/logos/ShopperStop.png" class="img-responsive img-centered" alt="Shopper Stop">
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <a href="./package.html">
-                        <img src="img/logos/LifeStyle.jpg" class="img-responsive img-centered" alt="">
+                        <img src="img/logos/LifeStyle.jpg" class="img-responsive img-centered" alt="LifeStyle">
                     </a>
                 </div>
 				<div class="col-md-3 col-sm-6">
                     <a href="./package.html">
-                        <img src="img/logos/max.jpg" class="img-responsive img-centered" alt="">
+                        <img src="img/logos/max.jpg" class="img-responsive img-centered" alt="max">
                     </a>
                 </div>
             </div>

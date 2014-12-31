@@ -48,7 +48,7 @@
                 <button type="button" class="navbar-toggle btn-sm" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="fa fa-cog fa-2x "></span>
                 </button>
-                <button type="button" class="navbar-toggle pull-left btn-sm" data-toggle="collapse" id="menu-toggle">
+                <button type="button" class="navbar-toggle pull-left btn-sm" data-toggle="sidebar-nav" id="menu-toggle">
                     <span class="fa fa-bars fa-2x "></span>
                 </button>
                 <a class="navbar-brand" href="#page-top">PickDropStuff</a>
@@ -139,10 +139,15 @@
 <section id="order">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-lg-offset-2">
-                <h2 class="section-heading">Shopper Stop <a href="" data-toggle="modal" data-target="#retailers-modal"><span class="fa fa-chevron-down "></span></a></h2>
-                <hr class="divider">
+            <div class="col-md-3 col-md-offset-2">
+                <h2 class="section-heading" id="order-retailer-name">Select Retailer</h2> 
             </div>
+            <div class="col-md-1 ">
+                <a href="" data-toggle="modal" data-target="#retailers-modal"><span class="fa fa-chevron-down fa-3x pull-left"></span></a>
+            </div>
+        </div>
+        <div class="row col-md-9 col-md-offset-2">
+            <hr class="divider">
         </div>
        <div class="row">
             <form id="orderForm" novalidate>
@@ -150,18 +155,18 @@
                     <div class="col-md-3 col-lg-offset-3">
                         <div class="form-group">
                             <label>Bill Number</label>
-                            <input type="text" class="form-control" placeholder="It starts with SS..." id="invoice" required data-validation-required-message="Please enter parcel invoice number.">
+                            <input type="text" class="form-control" placeholder="It starts with SS..." id="order-invoice" required data-validation-required-message="Please enter parcel invoice number.">
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
                             <label>PickUp Date</label>
-                            <input type="text" class="form-control date-picker" placeholder="Parcel PickUp date *" id="parcelReadyDate" required data-validation-required-message="Please select expected parcel ready date.">
+                            <input type="text" class="form-control date-picker" placeholder="Parcel PickUp date *" id="order-pickupdate" required data-validation-required-message="Please select expected parcel ready date.">
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
                             <label>PickUp time</label>
-                            <select class="form-control" >
-                                <option id="11" value="11am - 12pm">11:00 - 12:00 PM</option>
+                            <select class="form-control" id="order-pickupTime">
+                                <option id="11" value="11am - 12am">11:00 - 12:00 am</option>
                                 <option id="12" value="12pm - 1pm">12:00 - 1:00 PM</option>
                                 <option id="1" value="1pm - 2pm">1:00 - 2:00 PM</option>
                                 <option id="2" value="2pm - 3pm">2:00- 3:00 PM</option>
@@ -174,14 +179,14 @@
                         </div>
                         <div class="form-group">
                             <label>Delivery Address</label>
-                            <select class="form-control" >
+                            <select class="form-control" id="order-dropAddress">
                                 <option value=""> Add your location</option>
                             </select>
                             <a href="" data-toggle="modal" data-target="#addlocation-modal">+ Add location</a>
                         </div>
                         <div class="form-group">
                             <label>Contact number</label>
-                            <input type="tel" class="form-control" placeholder="Your mobile number" id="phone" required data-validation-required-message="Please enter your mobile number.">
+                            <input type="tel" class="form-control" placeholder="Your mobile number" id="order-phone" required data-validation-required-message="Please enter your mobile number.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -197,8 +202,8 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-5 col-lg-offset-2 text-center">
-                        <div id="success"></div>
-                        <button type="submit" class="btn btn-xl">Place PickUp</button>
+                        <div id="order-success"></div>
+                        <button id="order-submit" type="submit" class="btn btn-xl">Place PickUp</button>
                     </div>
                 </div>
             </form>
@@ -214,13 +219,11 @@
                 <h2 class="modal-title" id="myModalLabel">Pick Retailer</h2>
             </div>
             <div class="clearfix"></div>
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                Shopper Stop
-              </a>
+            <div class="list-group" id="retailers-list">
+              <a href="#" class="list-group-item">Shopper Stop</a>
               <a href="#" class="list-group-item">Provogue</a>
               <a href="#" class="list-group-item">LifeStyle</a>
-              <a href="#" class="list-group-item">Mac</a>
+              <a href="#" class="list-group-item">Max</a>
               <a href="#" class="list-group-item">Vision Express</a>
             </div>                                                                                                             
         </div>
@@ -415,13 +418,13 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/order_parcel.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="js/agency.js"></script>
     
     <script src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
     <script type="text/javascript" src="js/connect.js"></script>
+    <script src="js/order_parcel.js"></script>
+
 
     <script type="text/javascript" src="http://amsul.ca/pickadate.js/lib/picker.js"></script>
     <script type="text/javascript" src="http://amsul.ca/pickadate.js/lib/picker.date.js"></script>
