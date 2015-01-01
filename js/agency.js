@@ -57,4 +57,7 @@ $(function() {
 	});
 });
 
+/* Html load methods*/
+$('#login-modal').load('login_register.html');
+
 /* Specific for package.html page*/

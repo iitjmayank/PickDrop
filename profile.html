@@ -1,0 +1,38 @@
+<div class="row">
+        <div class="col-md-12 col-md-offset-2 ">
+            <h4 class="section-heading"><u>Primary Details</u></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-12 col-md-offset-2">
+            <dl class="dl-horizontal">
+              <dt>First name:</dt> <dd>Nikhil</dd><br/>
+              <dt>Last name:</dt> <dd>Modi</dd><br/>
+              <dt>Gender:</dt> <dd>Male</dd><br/>
+              <dt>E-mail id:</dt> <dd>modi@gmail.com</dd><br/>
+              <dt>Contact Number:</dt> <dd>+91-9998880001</dd><br/>
+              <dt>Home address:</dt> <dd>
+                                        <address>C- 301, Lanco Hills,<br/>
+                                            Near DPS School, Gachibowli,<br/>
+                                            Hyderabad - 500032
+                                         </address>
+                                     </dd>
+              <dt>Office Address:</dt> <dd>
+                                        <address>C- 301, Lanco Hills,<br/>
+                                            Near DPS School, Gachibowli,<br/>
+                                            Hyderabad - 500032
+                                         </address>
+                                     </dd>
+            </dl>
+
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-lg-5 col-lg-offset-2 text-center">
+            <button  id = "profile-update" class="btn btn-xl">Update</button>
+        </div>
+    </div>
+    <script>
+    $('#profile-update').click(function() {
+      $('#user-section').load('profile_edit.html');
+    });
+    </script>

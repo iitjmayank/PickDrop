@@ -1,22 +1,28 @@
 
+
+$('#user-section').load('place_pickup.html');
+
+$('#place-pickup').click(function() {
+    $('#user-section').load('place_pickup.html');
+});
+
+$('#user-history').click(function() {
+    $('#user-section').load('order_history.html');
+});
+
+$('#user-profile').click(function() {
+    $('#user-section').load('profile.html');
+});
+
+$('#customer-help').click(function() {
+    //Load the FAQ page
+});
+
 var currentUser = Parse.User.current();
 
 if (!currentUser) {
     $('#login-modal').modal('show');
 }
-
-if (sessionStorage.getItem("RetailerName")) {
-    $('#order h2').text(sessionStorage.getItem("RetailerName"));
-}
-
-
-$(function() {
-    $('#retailers-list a').click(function() {
-        $('#order-retailer-name').text($(this).text());
-        // dismiss dialog box
-        $('#retailers-modal').modal('hide');
-    });
-});
 
 $(function() {
 

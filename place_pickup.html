@@ -1,0 +1,142 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-2">
+                <h2 class="section-heading" id="order-retailer-name">Select Retailer</h2> 
+            </div>
+            <div class="col-md-1 ">
+                <a href="" data-toggle="modal" data-target="#retailers-modal"><span class="fa fa-chevron-down fa-3x pull-left"></span></a>
+            </div>
+        </div>
+        <div class="row col-md-9 col-md-offset-2">
+            <hr class="divider">
+        </div>
+       <div class="row">
+            <form id="orderForm" novalidate>
+                <div class="row">
+                    <div class="col-md-3 col-lg-offset-3">
+                        <div class="form-group">
+                            <label>Bill Number</label>
+                            <input type="text" class="form-control" placeholder="It starts with SS..." id="order-invoice" required data-validation-required-message="Please enter parcel invoice number.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>PickUp Date</label>
+                            <input type="text" class="form-control date-picker" placeholder="Parcel PickUp date *" id="order-pickupdate" required data-validation-required-message="Please select expected parcel ready date.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>PickUp time</label>
+                            <select class="form-control" id="order-pickupTime">
+                                <option id="11" value="11am - 12am">11:00 - 12:00 am</option>
+                                <option id="12" value="12pm - 1pm">12:00 - 1:00 PM</option>
+                                <option id="1" value="1pm - 2pm">1:00 - 2:00 PM</option>
+                                <option id="2" value="2pm - 3pm">2:00- 3:00 PM</option>
+                                <option id="3" value="3pm - 4pm">3:00- 4:00 PM</option>
+                                <option id="4" value="4pm - 5pm">4:00- 5:00 PM</option>
+                                <option id="5" value="5pm - 6pm">5:00- 6:00 PM</option>
+                                <option id="6" value="6pm - 7pm">6:00- 7:00 PM</option>
+                                <option id="7" value="7pm - 8pm">7:00- 8:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address</label>
+                            <select class="form-control" id="order-dropAddress">
+                                <option value=""> Add your location</option>
+                            </select>
+                            <a href="" data-toggle="modal" data-target="#addlocation-modal">+ Add location</a>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact number</label>
+                            <input type="tel" class="form-control" placeholder="Your mobile number" id="order-phone" required data-validation-required-message="Please enter your mobile number.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-2">
+                        <h3 class="section-heading">Your bill</h3>
+                        <hr class="divider">
+                        <p class="text-muted text-center">Delivery charges: <span class="fa fa-inr fa-1x "></span> 80</p>
+                        <hr class="divider">
+                        <div class="clearfix"></div>
+                        <p class="text-muted text-center">Please pay the amount to delivery boy once you receive your parcel.</p>
+                        <div class="clearfix"></div>
+                        <p class="text-muted text-center"><b>Only Cash. No Cards Accepted. </b></p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-5 col-lg-offset-2 text-center">
+                        <div id="order-success"></div>
+                        <button id="order-submit" type="submit" class="btn btn-xl">Place PickUp</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="retailers-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" role="dialog">
+            <div class="modal-header login_modal_header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title" id="myModalLabel">Pick Retailer</h2>
+            </div>
+            <div class="clearfix"></div>
+            <div class="list-group" id="retailers-list">
+              <a href="#" class="list-group-item">Shopper Stop</a>
+              <a href="#" class="list-group-item">Provogue</a>
+              <a href="#" class="list-group-item">LifeStyle</a>
+              <a href="#" class="list-group-item">Max</a>
+              <a href="#" class="list-group-item">Vision Express</a>
+            </div>                                                                                                             
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addlocation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" role="dialog">
+            <div class="modal-header login_modal_header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title" id="myModalLabel">Add new address</h2>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm" novalidate>
+                    <div class="row">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="House number and society name" id="houseNumber" required data-validation-required-message="Please enter house number and society name.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Location landmark" id="landmark" required data-validation-required-message="Please enter location landmark.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <select class="form-control" >
+                            <option id="11" value="11am - 12pm">Hi-Tech</option>
+                            <option id="12" value="12pm - 1pm">Kondapur</option>
+                            <option id="1" value="1pm - 2pm">Gachibowli</option>
+                            <option id="2" value="2pm - 3pm">Madhavpur</option>
+                        </select>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="How should we save this address? Home, office,..." id="houseNumber" required data-validation-required-message="Please enter address shortcut.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-xl">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>                                                                                                            
+        </div>
+    </div>
+</div>
+
+<script>
+     if (sessionStorage.getItem("RetailerName")) {
+        $('#user-section h2').text(sessionStorage.getItem("RetailerName"));
+    }
+
+    $('#retailers-list a').click(function() {
+        $('#order-retailer-name').text($(this).text());
+        // dismiss dialog box
+        $('#retailers-modal').modal('hide');
+    });
+</script>

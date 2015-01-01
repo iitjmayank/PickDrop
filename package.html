@@ -73,47 +73,8 @@
         <!-- /.container-fluid -->
     </nav>
 
+<!-- Login modal-->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" role="dialog">
-            <div class="modal-header login_modal_header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="myModalLabel">Login to Your Account</h2>
-            </div>
-            <div class="modal-body">
-                <p>Pickdrop is the online service to deliver to stuff on the tap of a button when you think</p>
-                <br/>
-                <div class="clearfix"></div>
-                <div id='social-icons-conatainer'>
-                    <div class='modal-body-left'>
-                        <div class="form-group">
-                            <input type="text" id="username" placeholder="Enter your name" value="" class="form-control login-field">
-                            <i class="fa fa-user login-field-icon"></i>
-                        </div>
-        
-                        <div class="form-group">
-                            <input type="password" id="login-pass" placeholder="Password" value="" class="form-control login-field">
-                            <i class="fa fa-lock login-field-icon"></i>
-                        </div>
-        
-                        <a href="#" class="btn btn-success modal-login-btn text-center">Login</a>
-                        <a href="#" class="login-link text-center">Lost your password?</a>
-                    </div>
-                
-                    <div class='modal-body-right'>
-                        <div class="modal-social-icons">
-                            <a href='#' class="btn btn-default facebook"> <i class="fa fa-facebook modal-icons"></i> Sign In with Facebook </a>
-                            <a href='#' class="btn btn-default google"> <i class="fa fa-google-plus modal-icons"></i> Sign In with Google </a>
-                        </div> 
-                    </div>  
-                </div>                                                                                                              
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="modal-footer login_modal_footer">
-            </div>
-        </div>
-    </div>
 </div>
 
 <div id="wrapper">
@@ -121,286 +82,49 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="#order" class="page-scroll"><span class="fa fa-shopping-cart fa-2x"></span> New Pickup</a>
+                <a href="#" id="place-pickup" ><span class="fa fa-shopping-cart fa-2x"></span> New Pickup</a>
             </li>
             <li>
-                <a href="#tracking" class="page-scroll"><span class="fa fa-history fa-2x"></span> My Orders</a>
+                <a href="#" id="user-history" ><span class="fa fa-history fa-2x"></span> My Orders</a>
             </li>
             <li>
-                <a href="#profile " class="page-scroll"><span class="fa fa-user fa-2x"></span> My Profile</a>
+                <a href="#" id="user-profile" ><span class="fa fa-user fa-2x"></span> My Profile</a>
             </li>
             <li>
-                <a href="#customerCare" class="page-scroll"><span class="fa fa-smile-o fa-2x"></span> Help</a>
+                <a href="#" id="customer-help" ><span class="fa fa-smile-o fa-2x"></span> Help</a>
             </li>
         </ul>
     </div>
 </div>
 
-<section id="order">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-md-offset-2">
-                <h2 class="section-heading" id="order-retailer-name">Select Retailer</h2> 
-            </div>
-            <div class="col-md-1 ">
-                <a href="" data-toggle="modal" data-target="#retailers-modal"><span class="fa fa-chevron-down fa-3x pull-left"></span></a>
-            </div>
-        </div>
-        <div class="row col-md-9 col-md-offset-2">
-            <hr class="divider">
-        </div>
-       <div class="row">
-            <form id="orderForm" novalidate>
-                <div class="row">
-                    <div class="col-md-3 col-lg-offset-3">
-                        <div class="form-group">
-                            <label>Bill Number</label>
-                            <input type="text" class="form-control" placeholder="It starts with SS..." id="order-invoice" required data-validation-required-message="Please enter parcel invoice number.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>PickUp Date</label>
-                            <input type="text" class="form-control date-picker" placeholder="Parcel PickUp date *" id="order-pickupdate" required data-validation-required-message="Please select expected parcel ready date.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="form-group">
-                            <label>PickUp time</label>
-                            <select class="form-control" id="order-pickupTime">
-                                <option id="11" value="11am - 12am">11:00 - 12:00 am</option>
-                                <option id="12" value="12pm - 1pm">12:00 - 1:00 PM</option>
-                                <option id="1" value="1pm - 2pm">1:00 - 2:00 PM</option>
-                                <option id="2" value="2pm - 3pm">2:00- 3:00 PM</option>
-                                <option id="3" value="3pm - 4pm">3:00- 4:00 PM</option>
-                                <option id="4" value="4pm - 5pm">4:00- 5:00 PM</option>
-                                <option id="5" value="5pm - 6pm">5:00- 6:00 PM</option>
-                                <option id="6" value="6pm - 7pm">6:00- 7:00 PM</option>
-                                <option id="7" value="7pm - 8pm">7:00- 8:00 PM</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Delivery Address</label>
-                            <select class="form-control" id="order-dropAddress">
-                                <option value=""> Add your location</option>
-                            </select>
-                            <a href="" data-toggle="modal" data-target="#addlocation-modal">+ Add location</a>
-                        </div>
-                        <div class="form-group">
-                            <label>Contact number</label>
-                            <input type="tel" class="form-control" placeholder="Your mobile number" id="order-phone" required data-validation-required-message="Please enter your mobile number.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-lg-offset-2">
-                        <h3 class="section-heading">Your bill</h3>
-                        <hr class="divider">
-                        <p class="text-muted text-center">Delivery charges: <span class="fa fa-inr fa-1x "></span> 80</p>
-                        <hr class="divider">
-                        <div class="clearfix"></div>
-                        <p class="text-muted text-center">Please pay the amount to delivery boy once you receive your parcel.</p>
-                        <div class="clearfix"></div>
-                        <p class="text-muted text-center"><b>Only Cash. No Cards Accepted. </b></p>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-lg-5 col-lg-offset-2 text-center">
-                        <div id="order-success"></div>
-                        <button id="order-submit" type="submit" class="btn btn-xl">Place PickUp</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-<div class="modal fade" id="retailers-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" role="dialog">
-            <div class="modal-header login_modal_header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="myModalLabel">Pick Retailer</h2>
-            </div>
-            <div class="clearfix"></div>
-            <div class="list-group" id="retailers-list">
-              <a href="#" class="list-group-item">Shopper Stop</a>
-              <a href="#" class="list-group-item">Provogue</a>
-              <a href="#" class="list-group-item">LifeStyle</a>
-              <a href="#" class="list-group-item">Max</a>
-              <a href="#" class="list-group-item">Vision Express</a>
-            </div>                                                                                                             
-        </div>
-    </div>
+<div id="user-section" class="bg-light-gray">
+    
 </div>
 
-<div class="modal fade" id="addlocation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" role="dialog">
-            <div class="modal-header login_modal_header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="myModalLabel">Add new address</h2>
-            </div>
-            <div class="modal-body">
-                <form id="orderForm" novalidate>
-                    <div class="row">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="House number and society name" id="houseNumber" required data-validation-required-message="Please enter house number and society name.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Location landmark" id="landmark" required data-validation-required-message="Please enter location landmark.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <select class="form-control" >
-                            <option id="11" value="11am - 12pm">Hi-Tech</option>
-                            <option id="12" value="12pm - 1pm">Kondapur</option>
-                            <option id="1" value="1pm - 2pm">Gachibowli</option>
-                            <option id="2" value="2pm - 3pm">Madhavpur</option>
-                        </select>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="How should we save this address? Home, office,..." id="houseNumber" required data-validation-required-message="Please enter address shortcut.">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="col-lg-12 text-right">
-                            <div id="success"></div>
-                            <button type="submit" class="btn btn-xl">Add</button>
-                        </div>
-                    </div>
-                </form>
-            </div>                                                                                                            
-        </div>
-    </div>
-</div>
-
-<section id="tracking">
-    <div class=" row col-md-12 col-md-offset-1 text-center">
-        <h2 class="section-heading">My orders</h2>
-    </div>
-    <div class=" row">
-        <div class="col-md-2 col-md-offset-2">
-            <h4 class="service-heading"><u>Active orders</u></h4>  
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-md-8 col-md-offset-3 bg-light-gray">
-            <div class="row">
-                <div class="col-md-2 col-md-offset-1">
-                    <p><b>Shopper Stop</b></p>
-                </div>
-                <div class="col-md-2 col-md-offset-6">
-                    <a href=""> Cancel order</a>
-                </div>
-            </div>
-            <div class="row  bs-wizard" style="border-bottom:0;">
-            <div class="col-xs-3 bs-wizard-step disabled">
-              <div class="text-center bs-wizard-stepnum">Placed</div>
-              <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#" class="bs-wizard-dot"></a>
-            </div>
-            <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-              <div class="text-center bs-wizard-stepnum">Ready</div>
-              <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#" class="bs-wizard-dot"></a>
-            </div>
-            <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-              <div class="text-center bs-wizard-stepnum">Pickedup</div>
-              <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#" class="bs-wizard-dot"></a>
-            </div>
-            <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-              <div class="text-center bs-wizard-stepnum">Dropped</div>
-              <div class="progress"><div class="progress-bar"></div></div>
-              <a href="#" class="bs-wizard-dot"></a>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="row col-md-2 col-md-offset-2">
-            <h4 class="service-heading"><u>Past orders</u></h4>  
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-5 col-md-offset-3 bg-light-gray">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-1">
-                    <p><b>Shopper Stop</b></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="profile" class="bg-light-gray">
-    <div class="row">
-        <div class="col-md-12 col-md-offset-2 ">
-            <h4 class="section-heading"><u>Primary Details</u></h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6 col-md-12 col-md-offset-2">
-            <dl class="dl-horizontal">
-              <dt>First name:</dt> <dd>Nikhil</dd><br/>
-              <dt>Last name:</dt> <dd>Modi</dd><br/>
-              <dt>Gender:</dt> <dd>Male</dd><br/>
-              <dt>E-mail id:</dt> <dd>modi@gmail.com</dd><br/>
-              <dt>Contact Number:</dt> <dd>+91-9998880001</dd><br/>
-              <dt>Home address:</dt> <dd>
-                                        <address>C- 301, Lanco Hills,<br/>
-                                            Near DPS School, Gachibowli,<br/>
-                                            Hyderabad - 500032
-                                         </address>
-                                     </dd>
-              <dt>Office Address:</dt> <dd>
-                                        <address>C- 301, Lanco Hills,<br/>
-                                            Near DPS School, Gachibowli,<br/>
-                                            Hyderabad - 500032
-                                         </address>
-                                     </dd>
-            </dl>
-
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-lg-5 col-lg-offset-2 text-center">
-            <div id="success"></div>
-            <button type="submit" class="btn btn-xl">Update</button>
-        </div>
-    </div>
-</section>
-
-<!-- Customer care Grid Section -->
-<section id="customerCare" >
+<footer>
     <div class="container">
-        <div class="row ">
-            <div class="col-lg-12 col-lg-offset-1 text-center">
-                <h2 class="section-heading">Customer Care</h2>
-                <h3 class="section-subheading text-muted">Let us know, we are here to help you.</h3>
+        <div class="row col-md-offset-1">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; PickDrop 2014</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</section>
-
-    <footer>
-        <div class="container">
-            <div class="row col-md-offset-1">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; PickDrop 2014</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+</footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
