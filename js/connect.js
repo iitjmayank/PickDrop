@@ -4,7 +4,7 @@ Parse.initialize("bXkP2s23KZh0HNmKCRUlczT6oVADedZm1aw9Jj0r", "pxjEtmnNSkAQwJARrv
 var navSignIn = $('#nav-sign-in');
 var currentUser = Parse.User.current();
 if (currentUser) {
-	navSignIn.text("Hi," +setSignedInUsername());
+	navSignIn.text("Hi, " +setSignedInUsername());
 }
 
 function setSignedInUsername() {

@@ -25,6 +25,7 @@ $('#user-profile').click(function() {
 
 $('#customer-help').click(function() {
     //Load the FAQ page
+    $('#user-section').load('help.html');
 });
 
 $(function() {
