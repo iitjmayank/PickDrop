@@ -6,26 +6,23 @@
 <div class="row">
     <div class="col-xs-6 col-md-4 col-md-offset-2">
         <dl class="dl-horizontal">
-          <dt>First name:</dt> <dd><input type="text" id="firstname" placeholder="Enter your first name" value = "Nikhil" class="form-control login-field"></dd><br/>
-          <dt>Last name:</dt> <dd><input type="text" id="lastname" placeholder="Enter your last name" value = "Modi" class="form-control login-field"></dd><br/>
-          <dt>Gender:</dt> <dd>
+          <dt>First name:</dt> <dd><input type="text" id="firstname" placeholder="Enter your first name"  class="form-control login-field"></dd><br/>
+          <dt>Last name:</dt> <dd><input type="text" id="lastname" placeholder="Enter your last name"  class="form-control login-field"></dd><br/>
+          <dt>Gender:</dt> <dd id="gender">
                               <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" value="male" checked="true"> Male
+                                <input type="radio" name="genderOptions" value="male"> Male
                               </label>
                               <label class="radio-inline">
-                                <input type="radio" name="inlineRadioOptions" value="female"> Female
+                                <input type="radio" name="genderOptions" value="female"> Female
                               </label>
                             </dd><br/>
-          <dt>E-mail id:</dt> <dd>modi@gmail.com</dd><br/>
-          <dt>Contact Number:</dt> <dd><input type="text" id="mobilenumber" placeholder="Enter your mobile name" value = "+91-9998880001" class="form-control login-field"></dd><br/>
+          <dt>E-mail id:</dt> <dd id="email"></dd><br/>
+          <dt>Contact Number:</dt> <dd><input type="text" id="mobilenumber" placeholder="Enter your mobile name" class="form-control login-field"></dd><br/>
           <dt>Home address:</dt> <dd>
-                                    <textarea type="text" id="homeaddress" rows= "4" placeholder="Enter your home address" class="form-control login-field">C- 301, Lanco Hills,Near DPS School, Gachibowli,Hyderabad - 500032 </textarea>
+                                    <textarea type="text" id="homeaddress" rows= "4" placeholder="Enter your home address" class="form-control login-field"></textarea>
                                  </dd> <br/>
           <dt>Office Address:</dt> <dd>
-                                    <textarea type="text" id="officeaddress" rows= "4" placeholder="Enter your home address" class="form-control login-field">C- 301, Lanco Hills,
-Near DPS School, Gachibowli,
-Hyderabad - 500032 </textarea>
-                                 </dd>
+                                    <textarea type="text" id="officeaddress" rows= "4" placeholder="Enter your Office address" class="form-control login-field"></textarea></dd><dd><a href="" data-toggle="modal" data-target="#addlocation-modal"> + Add New address</a></dd>
         </dl>
     </div>
     <div class="clearfix"></div>
@@ -37,9 +34,44 @@ Hyderabad - 500032 </textarea>
     </div>
 </div>
 
+<div id="addlocation"></div>
+
 <script>
+  if (currentUser.get("firstname")) {
+    $('#firstname').val(currentUser.get("firstname"));
+  }
+  if (currentUser.get("lastname")) {
+    $('#lastname').val(currentUser.get("lastname"));
+  }
+  if (currentUser.get("gender")) {
+    //
+  };
+  $('#email').text(currentUser.get("email"));
+  if (currentUser.get("phone")) {
+    $('#mobilenumber').val(currentUser.get("phone"));
+  }
+  if (currentUser.get("homeaddress")) {
+    $('#homeaddress').val(currentUser.get("homeaddress"));
+  }
+  if (currentUser.get("officeaddress")) {
+    $('#officeaddress').val(currentUser.get("officeaddress"));
+  }
+  $('#addlocation').load('add_new_location.html');
   $('#profile-save').click(function() {
-      $('#user-section').load('profile.html');
+      currentUser.set("firstname", $('#firstname').val());
+      currentUser.set("lastname", $('#lastname').val());
+      currentUser.set("gender",$('input[name=genderOptions]:checked').val());
+      currentUser.set("phone", $('#mobilenumber').val());
+      currentUser.set("homeaddress", $('#homeaddress').val());
+      currentUser.set("officeaddress", $('#officeaddress').val());
+      currentUser.save(null, {
+        success: function(currentUser) {
+          $('#user-section').load('profile.html');
+        },
+        error: function(currentUser, error) {
+            alert(error);
+        }
+      });
     });
   $('#profile-cancel').click(function() {
       $('#user-section').load('profile.html');
