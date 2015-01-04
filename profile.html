@@ -11,14 +11,7 @@
               <dt>Gender:</dt> <dd class="gender">--</dd><br/>
               <dt>E-mail id:</dt> <dd class="email">--</dd><br/>
               <dt>Contact Number:</dt> <dd class="phone">+91- </dd><br/>
-              <dt>Home address:</dt> <dd>
-                                        <address class="homeaddress"> --
-                                         </address>
-                                     </dd>
-              <dt>Office Address:</dt> <dd>
-                                        <address class="officeaddress"> --
-                                         </address>
-                                     </dd>
+              <dt>Home address:</dt> <dd class="address"> No Stored address. Please add location for better experience.</dd>
             </dl>
 
         </div>
@@ -41,11 +34,14 @@
       if (currentUser.get("phone")) {
         $('.phone').text( "+91-" + currentUser.get("phone"));
       }
-      if (currentUser.get("homeaddress")) {
-        $('.homeaddress').text(currentUser.get("homeaddress"));
-      }
-      if (currentUser.get("officeaddress")) {
-        $('.officeaddress').text(currentUser.get("officeaddress"));
+      if (currentUser.get("address").length>0) {
+        var addressHTML = "<dl class=dl-horizontal>";
+        currentUser.get("address").forEach(function(entry) {
+            var res = entry.split('~');
+            addressHTML+= "<dt>"+res[0]+":</dt><dd>"+res[1]+"</dd>";
+        });
+        addressHTML+="</dl>";
+        $('.address').html(addressHTML);
       }
       $('#profile-update').click(function() {
         $('#user-section').load('profile_edit.html');

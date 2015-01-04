@@ -25,20 +25,17 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
-$(function() {
+
 	$('#pick-retailer-dropdown > li').click(function() {
 		sessionStorage.setItem("RetailerName", $(this).text());
 	});
-});
 
-$(function() {
 	$('.clients img').click(function() {
 		sessionStorage.setItem("RetailerName", $(this).attr("alt"));
 	});
-});
 
 /* Html load methods*/
-$('#login-modal').load('login_register.html');
+
 $('#footer').load('footer.html');
 
 /* Specific for package.html page*/

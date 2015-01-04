@@ -41,7 +41,6 @@
                         <div class="form-group">
                             <label>Delivery Address</label>
                             <select class="form-control" id="order-dropAddress">
-                                <option value=""> Add your location</option>
                             </select>
                             <a href="" data-toggle="modal" data-target="#addlocation-modal">+ Add location</a>
                         </div>
@@ -90,18 +89,27 @@
     </div>
 </div>
 
-<div id="addlocation"></div>
-
 <script>
-    $('#addlocation').load('add_new_location.html');
-     if (sessionStorage.getItem("RetailerName")) {
-        $('#user-section h2').text(sessionStorage.getItem("RetailerName"));
-    }
+    $(function() {
+        if (sessionStorage.getItem("RetailerName")) {
+            $('#user-section h2').text(sessionStorage.getItem("RetailerName"));
+        }
 
-    $('#retailers-list a').click(function() {
-        $('#order-retailer-name').text($(this).text());
-        // dismiss dialog box
-        $('#retailers-modal').modal('hide');
+        $('#retailers-list a').click(function() {
+            $('#order-retailer-name').text($(this).text());
+            // dismiss dialog box
+            $('#retailers-modal').modal('hide');
+        });
+
+        if (currentUser) {
+            $('#order-phone').val(currentUser.get("phone"));
+            currentUser.get("address").forEach(function(entry) {
+                var res = entry.split("~");
+                $('#order-dropAddress').append(new Option(res[0], res[1]));
+            });
+        }
+        else {
+            $('#order-dropAddress').append('<option> Add your location</option>');
+        }
     });
-
 </script>

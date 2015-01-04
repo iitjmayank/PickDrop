@@ -1,32 +1,30 @@
 // connect with parse.com 
 Parse.initialize("bXkP2s23KZh0HNmKCRUlczT6oVADedZm1aw9Jj0r", "pxjEtmnNSkAQwJARrv5j4BrmeaylUelBp7jJwodG");
-
-var navSignIn = $('#nav-sign-in');
 var currentUser = Parse.User.current();
-if (currentUser) {
-	navSignIn.text("Hi, " +setSignedInUsername());
-}
-
-function setSignedInUsername() {
-	var firstname = currentUser.get("firstname");
-	if (!firstname) {
-		var username = currentUser.get("username").split("@");
-		firstname = username[0];
-	}
-	return firstname;
-}
-
-navSignIn.click(function() {
-	var currentUser = Parse.User.current();
-	if (currentUser) {
-		//logout the user
-		Parse.User.logOut();
-		navSignIn.text('sign in');
-		$('#nav-sign-in').attr("data-target", "#login-modal");
-	}
-});
 
 $(function() {
+    if (currentUser) {
+        setNavSignInAfterLogin();
+    }
+
+    $('#logout-btn').click(function() {
+        Parse.User.logOut();
+        var navSignIn = $('#nav-sign-in');
+        navSignIn.attr('data-target','#login-modal');
+        navSignIn.attr('data-toggle', 'modal');
+    });
+});
+
+function setSignedInUsername() {
+    var firstname = currentUser.get("firstname");
+    if (!firstname) {
+        var username = currentUser.get("username").split("@");
+        firstname = username[0];
+    }
+    return firstname;
+}
+
+function validation() {
 
     $("input,textarea").jqBootstrapValidation({
         preventSubmit: true,
@@ -162,30 +160,45 @@ $(function() {
                         var invoice_number = $('input#order-invoice').val();
                         var pickup_date = $('input#order-pickupdate').val();
                         var pickup_time = $('#order-pickupTime option:selected').text();
-                        var drop_address = $('#order-dropAddress option:selected').text();
-                        var phone_number = $('#input#order-phone').val();
+                        var drop_address = $('#order-dropAddress option:selected').val();
+                        var phone_number = $('input#order-phone').val();
 
-                        var PickUpOrder = Parse.Object.extend('order');
-                        var pickupOrder = new PickUpOrder();
-                        pickUpOrder.set("retailer", pickup_retailer);
-                        pickupOrder.set("invoice", invoice_number);
-                        pickupOrder.set("date", pickup_date);
-                        pickUpOrder.set("time", pickup_time);
-                        pickUpOrder.set("address", drop_address);
-                        pickUpOrder.set("phone", phone_number);
-
-                        pickUpOrder.save(null, {
+                        var PlaceOrder = Parse.Object.extend("OrderList");
+                        var order = new PlaceOrder();
+                        order.save({
+                            Username: currentUser.get("username"),
+                            Retailer: pickup_retailer,
+                            Invoice: invoice_number,
+                            PickUpDate: pickup_date,
+                            PickUpTime: pickup_time,
+                            DropAddress: drop_address,
+                            Phone: phone_number,
+                            Status: 0
+                        },{
                             success: function() {
-                                //Submit page
+                                //show the exit page
+                                $('#user-section').load('placeorder_success.html');
                             },
                             error: function() {
-                                //show error
+                                //print some error
                             }
                         });
                     }
                     else {
                        $('#login-modal').modal('show');
                     }
+                break;
+
+                case addLocation:
+                    var houseNumber = $('#houseNumber').val();
+                    var landmark = $('#landmark').val();
+                    var area = $('#area option:selected').val();
+                    var addressalias = $('#address-alias').val();
+                    currentUser.save( currentUser.addUnique("address", addressalias+"~"+ houseNumber + "\n" +landmark +"\n"+ area), {
+                        success: function() {
+                            $('#addlocation-modal').modal('hide');
+                        }
+                    });
                 break;
                 
             };
@@ -199,7 +212,7 @@ $(function() {
         e.preventDefault();
         $(this).tab("show");
     });
-});
+};
 
 
 /*When clicking on Full hide fail/success boxes */
@@ -230,10 +243,15 @@ function userLoginin(username, password) {
 function loginSuccess () {
 	$('#login-modal').modal('hide');
 	currentUser = Parse.User.current();
-    navSignIn.text("Hi," + setSignedInUsername());
-    $('#nav-sign-in').attr("data-target", "#");
-
+    setNavSignInAfterLogin();
     $('#loginForm').trigger("reset");
+}
+
+function setNavSignInAfterLogin() {
+    var navSignIn = $('#nav-sign-in');
+    navSignIn.text("Hi, " +setSignedInUsername());
+    navSignIn.attr('data-target','');
+    navSignIn.attr('data-toggle', 'dropdown');
 }
 
 function fbLogin() {

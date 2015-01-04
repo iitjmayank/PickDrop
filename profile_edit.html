@@ -50,20 +50,21 @@
   if (currentUser.get("phone")) {
     $('#mobilenumber').val(currentUser.get("phone"));
   }
-  if (currentUser.get("homeaddress")) {
-    $('#homeaddress').val(currentUser.get("homeaddress"));
-  }
-  if (currentUser.get("officeaddress")) {
-    $('#officeaddress').val(currentUser.get("officeaddress"));
-  }
+  if (currentUser.get("address")) {
+      var useraddress = currentUser.get("address").split('~');
+      $('#homeaddress').text(useraddress[1]);
+      $('#officeaddress').text(useraddress[3]);
+    }
   $('#addlocation').load('add_new_location.html');
   $('#profile-save').click(function() {
       currentUser.set("firstname", $('#firstname').val());
       currentUser.set("lastname", $('#lastname').val());
       currentUser.set("gender",$('input[name=genderOptions]:checked').val());
       currentUser.set("phone", $('#mobilenumber').val());
-      currentUser.set("homeaddress", $('#homeaddress').val());
-      currentUser.set("officeaddress", $('#officeaddress').val());
+      //alert('homeaddress:' + $('#homeaddress').val());
+      currentUser.set("address", 'homeaddress~' + $('#homeaddress').val() + '~officeaddress~' + $('#officeaddress').val());
+      //currentUser.set("homeaddress", $('#homeaddress').val());
+      //currentUser.set("officeaddress", $('#officeaddress').val());
       currentUser.save(null, {
         success: function(currentUser) {
           $('#user-section').load('profile.html');
