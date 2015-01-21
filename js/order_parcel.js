@@ -9,9 +9,9 @@ function test() {
         $('#login-modal').modal('show');
     }
     $('#addlocation').load('add_new_location.html');
-    $('#user-section').load('placeorder_success.html', function() {
-                                    validation();
-                                });
+    $('#user-section').load('place_pickup.html', function() {
+        validation();
+    });
 
     $('#place-pickup').click(function() {
         $('#user-section').load('place_pickup.html', function() {
